@@ -47,6 +47,29 @@ export default {
    --warning: #ffef7c;
 }
 
+/* Selection */
+::selection {
+    color: #FFF;
+    background: var(--crimson);
+}
+/* Scroll bars */
+::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--blue);
+    border: 3px solid transparent;
+    border-radius: 9px;
+    background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: var(--lightblue);
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
 /* Reset */
 body, html {
   margin: 0;
@@ -129,6 +152,7 @@ button:disabled:hover, .btn.disabled:hover {
     border-radius: .25rem;
     margin: 1rem 0;
     padding: 1rem;
+    display: inline-block;
     position: relative;
 }
 .alert-warning {
@@ -149,39 +173,76 @@ button:disabled:hover, .btn.disabled:hover {
     color: #FFF;
     background: var(--orange);
 }
+
+
+@media screen and (max-width: 800px) {
+    .alert {
+        display: block;
+    }
+}
+
+/* Mobile */
+@media screen and (max-device-width: 1100px) {
+    .alert {
+        display: block;
+    }
+}
 </style>
+
 <style scoped>
 .layout {
     display: grid;
     grid-template-columns: 250px 1fr;
-    grid-template-areas: 'header main' 'footer footer';
+    grid-template-areas: 'header main' '. footer';
     grid-row-gap: .5rem;
-    margin: .5rem;
+    justify-items: center;
+    margin: .5rem auto;
+    max-width: 1250px;
 }
 
 .app-header {
     grid-area: header;
     height: 100%;
+    width: 100%;
     background: transparent;
 }
 
 .page {
     grid-area: main;
-    min-height: 66vh;
+    min-height: 40vw;
+    width: calc(100% - 1rem);
+    max-width: 1000px;
+    margin-right: auto;
     padding: 1rem;
     background: #FFF;
-    border-radius: .25rem;
+    border-radius: 2px;
     box-shadow: 0 .125rem 1rem .125rem #111A;
+    overflow: hidden;
 }
 
 .app-footer {
     grid-area: footer;
+    width: calc(100% - 1rem);
+    margin-right: auto;
 }
 
 
 @media screen and (max-width: 800px) {
     .layout {
         grid-template-areas: 'header header' 'main main' 'footer footer';
+        justify-items: unset;
+    }
+    .app-header {
+        width: unset;
+    }
+    .page {
+        border-radius: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+    .app-footer {
+        margin-right: 0;
+        width: 100%;
     }
 }
 </style>

@@ -12,6 +12,22 @@
         @touchend="handleMouseUp"
     ></canvas>
     <div
+        class="drawing-field-before"
+        :style="{
+            height: `calc(${canvasHeight}px - 1rem)`,
+            width: `${canvasWidth/2}px`,
+            opacity: hasStartedDrawing ? 1 : 0
+        }"
+    ></div>
+    <div class="drawing-field-after"
+    :style="{
+            height: `calc(${canvasHeight}px - 1rem)`,
+            width: `${canvasWidth/2}px`,
+            opacity: hasStartedDrawing ? 1 : 0
+        }"
+    ></div>
+
+    <div
         class="msg"
         :style="{
             height: `calc(${canvasHeight + 'px'} + .5rem)`,
@@ -21,7 +37,7 @@
     >
         <p>Draw here</p>
     </div>
-    <br /><br />
+    <br />
     <drawing-options
         @reset="reset"
         @value-change="handleChange"
@@ -222,13 +238,34 @@ export default {
 
 <style scoped>
 .drawing-field {
+    position: relative;
     background: #FFF;
     border-radius: .5rem;
-    box-shadow: 0 .5rem 2rem .125rem #1115;
-    border: .25rem dashed var(--heading-color);
+    border: .25rem double var(--blue);
     cursor: crosshair;
     box-sizing: content-box;
+    z-index: 2;
+    box-shadow: 0 2px .25rem 1px #777A;
 }
+/* Canvas shadow */
+.drawing-field-before, .drawing-field-after {
+    position: absolute;
+    content: '';
+    bottom: 15px;
+    width: 50%;
+    max-width:300px;
+    background: #777;
+    box-shadow: 0 15px 10px #777A;
+    transform: rotate(-2deg);
+    top: .75rem; left: 10px;
+    transition: .3s opacity ease-in-out;
+}
+.drawing-field-after {
+    transform: rotate(2deg);
+    right: 10px;
+    left: auto;
+}
+
 .msg {
     background: #111;
     color: var(--pink);

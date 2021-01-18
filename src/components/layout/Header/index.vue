@@ -1,5 +1,5 @@
 <template>
-  <div class="header-content">
+  <div :class="`${isNavOpen ? 'navOpen' : ''} header-content`">
       <h1 id="app-title">
           <router-link to="/">Simple drawing</router-link>
       </h1>
@@ -74,7 +74,7 @@ export default {
         flex-direction: column;
         padding: 0;
         background: transparent;
-        top: 1.5rem; right: .125rem;
+        top: 1.5rem; right: 1rem;
         height: 1.5rem; width: 2rem;
         border: none;
         box-shadow: none !important;
@@ -167,6 +167,13 @@ export default {
     .header-nav.open ul li {
         height: 100%;
         opacity: 1;
+    }
+    .header-content #app-title {
+        margin-bottom: 0;
+        transition: .3s margin ease;
+    }
+    .header-content.navOpen #app-title {
+        margin-bottom: 1rem;
     }
 }
 </style>

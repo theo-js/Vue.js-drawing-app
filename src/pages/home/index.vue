@@ -1,8 +1,10 @@
 <template>
-  <article class="home-page">
+  <article class="home-page" key="landing">
     <h2 class="welcome">Welcome to <strong>Simple Drawing</strong> !</h2>
-    <p>a small app that lets you make very simple drawings directly within your web browser.</p>
-    <br/>
+    <p>a small app that lets you create very simple drawings directly within your web browser.</p>
+    <animated-pen
+      className="app-logo"
+    ></animated-pen>
     <router-link
       class="btn get-started-btn"
       to="/draw"
@@ -11,8 +13,13 @@
 </template>
 
 <script>
+import animatedPen from '../../components/svg/animated-pen'
+
 export default {
-    name: 'Home'
+    name: 'Home',
+    components: {
+      'animated-pen': animatedPen
+    }
 }
 </script>
 
@@ -31,14 +38,20 @@ export default {
     background: var(--crimson);
     color: #FFF;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding: .25em .5em;
-    border-radius: .5em;
+    margin-bottom: 1rem;
+    border-radius: 999px;
     border-color: var(--crimson);
   }
   .get-started-btn:hover {
     color: var(--crimson);
     background: #FFF;
     border-color: var(--heading-color);
+  }
+
+  /* App logo */
+  .app-logo {
+    height: 250px;
   }
 </style>

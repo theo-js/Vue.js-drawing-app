@@ -1,10 +1,12 @@
 <template>
-    <div class="drawing-container">
-        <drawing-field></drawing-field>
+    <div class="draw-page">
+        <div class="drawing-container" key="draw">
+            <drawing-field></drawing-field>
+        </div>
+        <p class="alert alert-warning">
+            <strong>IMPORTANT:</strong> Resizing the window will erase a part of your drawing !
+        </p>
     </div>
-    <p class="alert alert-warning">
-        <strong>IMPORTANT:</strong> Resizing the window will erase a part of your drawing !
-    </p>
 </template>
 
 <script>
@@ -20,6 +22,7 @@ export default {
 <style scoped>
 .drawing-container {
     position: relative;
-    text-align: center;
+    display: flex;
+    flex-flow: column wrap;
 }
 </style>

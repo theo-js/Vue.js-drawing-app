@@ -55,14 +55,14 @@
                     title="Save drawing"
                     class="save-btn"
                     @click="handleSave"
-                    :disabled="!hasStartedDrawing"
+                    :disabled="!hasStartedDrawing || !fileName"
                 >
                     <font-awesome-icon icon="save"></font-awesome-icon>
                 </button>
                 <input
                     title="Save as ?"
                     class="file-name"
-                    placeholder="SAVE AS..."
+                    placeholder="SAVE AS ..."
                     type="text"
                     :value="fileName"
                     maxlength="100"
@@ -143,10 +143,13 @@ export default {
 </script>
 <style scoped>
 .drawing-options {
+    display: inline-block;
     background: var(--crimson);
     color: #FFF;
     border-radius: .5rem;
     padding: .5rem;
+    margin-left: auto;
+    box-shadow: 0 0 0 .25rem var(--pink), 0 5px .375rem 0 #2229;
 }
 .options-list {
     padding: 0;
@@ -206,13 +209,13 @@ button:disabled {
     color: unset;
 }
 .file-name {
-    width: 6em;
+    width: 7em;
 }
 input[type="text"] {
     background: transparent;
     color: #FFF;
     border: none;
-    border-bottom: 1px solid #FFF;
+    border-bottom: 1px solid var(--pink);
     padding: .5em 0;
 }
 input[type="text"]::placeholder {

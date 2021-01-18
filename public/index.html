@@ -8,15 +8,35 @@
     <meta name="theme-color" content="#08415C">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>Simple drawing</title>
-    <!-- fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <!-- Twitter for websites -->
+    <script>window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+    
+      return t;
+    }(document, "script", "twitter-wjs"));
+    </script>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but Simple drawing doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=418630402715445&autoLogAppEvents=1" nonce="hfk0XoSJ"></script>
     <div id="app"></div>
   </body>
 </html>
